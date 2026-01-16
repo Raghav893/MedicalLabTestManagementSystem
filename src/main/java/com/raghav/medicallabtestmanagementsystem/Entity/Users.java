@@ -32,6 +32,11 @@ public class Users {
     @Column(nullable = false)
     private String authProvider;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+
     @Column(nullable = false,updatable = false)
     private LocalDateTime CreatedAt;
 

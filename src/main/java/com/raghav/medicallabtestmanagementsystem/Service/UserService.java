@@ -2,6 +2,7 @@ package com.raghav.medicallabtestmanagementsystem.Service;
 
 import com.raghav.medicallabtestmanagementsystem.DTO.LoginDTO;
 import com.raghav.medicallabtestmanagementsystem.DTO.RegisterDTO;
+import com.raghav.medicallabtestmanagementsystem.Entity.Gender;
 import com.raghav.medicallabtestmanagementsystem.Entity.Roles;
 import com.raghav.medicallabtestmanagementsystem.Entity.Users;
 import com.raghav.medicallabtestmanagementsystem.Repo.UserRepo;
@@ -21,6 +22,7 @@ public class UserService {
     private final JwtService jwtService;
     public Users register(RegisterDTO dto){
         Users users = new Users();
+        users.setGender(Gender.valueOf(dto.getGender()));
         users.setUsername(dto.getUsername());
         users.setPassword(dto.getPassword());
         users.setRole(Roles.valueOf(dto.getRole()));
