@@ -26,7 +26,7 @@ public class Patient {
     private LocalDate Dob;
 
     @Enumerated(EnumType.STRING)
-    private String gender;
+    private Gender gender;
 
     private int phone;
 
