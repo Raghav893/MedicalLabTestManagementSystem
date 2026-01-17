@@ -18,6 +18,9 @@ public class LabTechnician {
     @JoinColumn(name = "userId")
     private Users users;
 
+    @Enumerated(EnumType.STRING)
+    private String gender;
+
     private Long employeeCode;
     private String labBranch;
 
