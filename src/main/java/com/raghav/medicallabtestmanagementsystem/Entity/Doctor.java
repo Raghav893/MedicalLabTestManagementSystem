@@ -24,7 +24,7 @@ public class Doctor {
     private String gender;
     private String specialization;
 
-    private int phone;
+    private String phone;
 
     private LocalDate Dob;
 
