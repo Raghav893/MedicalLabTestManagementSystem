@@ -20,7 +20,8 @@ public class Doctor {
     private Users users;
 
     private String FullName;
-
+    @Enumerated(EnumType.STRING)
+    private String gender;
     private String specialization;
 
     private int phone;
