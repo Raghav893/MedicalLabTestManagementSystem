@@ -4,6 +4,7 @@ import com.raghav.medicallabtestmanagementsystem.DTO.LoginDTO;
 import com.raghav.medicallabtestmanagementsystem.DTO.RegisterDTO;
 import com.raghav.medicallabtestmanagementsystem.Entity.*;
 import com.raghav.medicallabtestmanagementsystem.Repo.DoctorRepository;
+import com.raghav.medicallabtestmanagementsystem.Repo.LabTechRepository;
 import com.raghav.medicallabtestmanagementsystem.Repo.PatientRepository;
 import com.raghav.medicallabtestmanagementsystem.Repo.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class UserService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final DoctorRepository doctorRepository;
+    private final LabTechRepository techRepository;
     public Users register(RegisterDTO dto){
         Roles role;
         try {
@@ -53,7 +55,11 @@ public class UserService {
                 doctor.setUsers(users);
                 doctor.setGender(String.valueOf(users.getGender()));
                 doctorRepository.save(doctor);
-
+            case LAB_TECH:
+                LabTechnician tech = new LabTechnician();
+                tech.setUsers(users);
+                tech.setGender(String.valueOf(users.getGender()));
+                techRepository.save(tech);
         }
         return  users;
 
