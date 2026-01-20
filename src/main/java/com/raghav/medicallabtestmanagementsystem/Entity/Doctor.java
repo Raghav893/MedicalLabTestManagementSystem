@@ -21,7 +21,7 @@ public class Doctor {
 
     private String FullName;
     @Enumerated(EnumType.STRING)
-    private String gender;
+    private Gender gender;
     private String specialization;
 
     private String phone;

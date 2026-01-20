@@ -19,7 +19,7 @@ public class LabTechnician {
     private Users users;
 
     @Enumerated(EnumType.STRING)
-    private String gender;
+    private Gender gender;
 
     private Long employeeCode;
     private String labBranch;

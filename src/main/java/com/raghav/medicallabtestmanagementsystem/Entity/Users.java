@@ -40,5 +40,4 @@ public class Users {
     @Column(nullable = false,updatable = false)
     private LocalDateTime CreatedAt;
 
-
 }

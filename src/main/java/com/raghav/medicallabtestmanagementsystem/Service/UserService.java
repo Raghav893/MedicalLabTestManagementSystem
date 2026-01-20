@@ -53,12 +53,12 @@ public class UserService {
             case DOCTOR:
                 Doctor doctor = new Doctor();
                 doctor.setUsers(users);
-                doctor.setGender(String.valueOf(users.getGender()));
+                doctor.setGender((users.getGender()));
                 doctorRepository.save(doctor);
             case LAB_TECH:
                 LabTechnician tech = new LabTechnician();
                 tech.setUsers(users);
-                tech.setGender(String.valueOf(users.getGender()));
+                tech.setGender((users.getGender()));
                 techRepository.save(tech);
         }
         return  users;
