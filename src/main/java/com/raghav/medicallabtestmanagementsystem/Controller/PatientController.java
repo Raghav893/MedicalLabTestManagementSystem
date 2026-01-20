@@ -27,7 +27,7 @@ public class PatientController {
         patientService.updateProfile(username, dto);
         return ResponseEntity.ok("Patient profile updated");
     }
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Patient>> getallPatients(){
         return new ResponseEntity<>(patientService.getAllPatients(), HttpStatus.FOUND);
     }

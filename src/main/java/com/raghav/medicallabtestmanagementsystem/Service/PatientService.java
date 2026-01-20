@@ -25,7 +25,10 @@ public class PatientService {
         if (patient == null){
             throw new RuntimeException("Patient profile Not Found !!");
         }
-
+        if (dto.getFullName() != null) patient.setFullname(dto.getFullName());
+        if (dto.getDob() != null) patient.setDob(dto.getDob());
+        if (dto.getPhone() != null) patient.setPhone(dto.getPhone());
+        patientRepository.save(patient);
     }
 
     public List<Patient> getAllPatients() {
