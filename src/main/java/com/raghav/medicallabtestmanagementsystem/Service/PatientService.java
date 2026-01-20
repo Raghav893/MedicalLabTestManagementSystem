@@ -8,6 +8,8 @@ import com.raghav.medicallabtestmanagementsystem.Repo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PatientService {
@@ -24,5 +26,9 @@ public class PatientService {
             throw new RuntimeException("Patient profile Not Found !!");
         }
 
+    }
+
+    public List<Patient> getAllPatients() {
+        return patientRepository.findAll();
     }
 }
