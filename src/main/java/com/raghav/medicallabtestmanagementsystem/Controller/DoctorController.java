@@ -1,8 +1,10 @@
 package com.raghav.medicallabtestmanagementsystem.Controller;
 
+import com.raghav.medicallabtestmanagementsystem.DTO.DoctorProfileUpdateDTO;
 import com.raghav.medicallabtestmanagementsystem.DTO.PatientProfileUpdateDTO;
+import com.raghav.medicallabtestmanagementsystem.Entity.Doctor;
 import com.raghav.medicallabtestmanagementsystem.Entity.Patient;
-import com.raghav.medicallabtestmanagementsystem.Service.PatientService;
+import com.raghav.medicallabtestmanagementsystem.Service.DoctorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +15,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@PreAuthorize("hasAnyRole('PATIENT','ADMIN')")
-@RequestMapping("/patient")
+@RequestMapping("/doctor")
+@PreAuthorize("hasAnyRole('DOCTOR','ADMIN')")
 @RequiredArgsConstructor
-public class PatientController {
-    private  final PatientService patientService;
+public class DoctorController {
+    private final DoctorService service;
     @PutMapping("/profile")
     public ResponseEntity<?> updateProfile(
-            @RequestBody PatientProfileUpdateDTO dto,
+            @RequestBody DoctorProfileUpdateDTO dto,
             Authentication authentication) {
 
         String username = authentication.getName();
-        patientService.updateProfile(username, dto);
-        return ResponseEntity.ok("Patient profile updated");
+        service.UpdateProfile(username, dto);
+        return ResponseEntity.ok("Doctor profile updated");
     }
     @GetMapping("")
-    public ResponseEntity<List<Patient>> getallPatients(){
-        return new ResponseEntity<>(patientService.getAllPatients(), HttpStatus.OK);
+    public ResponseEntity<List<Doctor>> getallPatients(){
+        return new ResponseEntity<>(service.getAllDoctors(), HttpStatus.OK);
     }
 }
