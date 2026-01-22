@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LabTechServices {
@@ -28,6 +30,9 @@ public class LabTechServices {
         if (dto.getLabBranch() != null) technician.setLabBranch(dto.getLabBranch());
         if (dto.getEmployeeCode() !=null) technician.setEmployeeCode(dto.getEmployeeCode());
 
+    }
+    public List<LabTechnician> getAllLabtech(){
+        return repo.findAll();
     }
 
 }
