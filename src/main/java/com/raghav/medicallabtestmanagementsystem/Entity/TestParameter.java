@@ -5,30 +5,31 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LabTest {
+public class TestParameter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long labTestId;
-
     @Column(nullable = false,unique = true)
-    private String testCode;
+    private Long TestParamId;
 
-    @Column(nullable = false,unique = true)
-    private String testName;
-
-    @Column(nullable = false)
-    private String description ;
+    @OneToOne
+    @JoinColumn(name = "labTestId")
+    private LabTest labTest;
 
     @Column(nullable = false)
-    private int price;
+    private String parameterName;
 
     @Column(nullable = false)
-    private boolean   active;
+    private String unit;
 
+    @Column(nullable = false)
+    BigDecimal minRange;
 
-
+    @Column(nullable = false)
+    BigDecimal maxRange;
 }
