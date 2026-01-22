@@ -17,7 +17,7 @@ public class TestParameter {
     @Column(nullable = false,unique = true)
     private Long TestParamId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "labTestId")
     private LabTest labTest;
 
