@@ -1,5 +1,6 @@
 package com.raghav.medicallabtestmanagementsystem.Controller;
 
+import com.raghav.medicallabtestmanagementsystem.DTO.LabTestUpdateDTO;
 import com.raghav.medicallabtestmanagementsystem.Entity.LabTest;
 import com.raghav.medicallabtestmanagementsystem.Service.LabTestService;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +37,8 @@ public class LabTestController {
     }
     @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping("/admin/lab-tests/{labTestId}")
-    public ResponseEntity<?> UpdateLabTest(@PathVariable Long labTestId){
-        service.update(labTestId);
+    public ResponseEntity<?> UpdateLabTest(@PathVariable Long labTestId, @RequestBody LabTestUpdateDTO dto){
+        service.update(labTestId,dto);
         return ResponseEntity.ok("UPDATED");
     }
 }

@@ -7,4 +7,8 @@ public class LabTestUpdateDTO {
     String description;
     int price;
     boolean active;
+
+    public boolean getActive() {
+        return active;
+    }
 }
