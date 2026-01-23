@@ -41,5 +41,11 @@ public class LabTestController {
         service.update(labTestId,dto);
         return ResponseEntity.ok("UPDATED");
     }
+
+    @PatchMapping("/admin/lab-tests/{labTestId}/deactivate")
+    public ResponseEntity<?> deactivateLabTest(@PathVariable Long labTestId) {
+        service.deactivate(labTestId);
+        return ResponseEntity.ok("Deactivated");
+    }
 }
 

@@ -36,4 +36,13 @@ public class LabTestService {
         labTest.setPrice(dto.getPrice());
         labTest.setActive(dto.getActive());
     }
+
+    public void deactivate(Long labTestId) {
+        Optional<LabTest> labTestOptional = repository.findById(labTestId);
+        LabTest labTest =  labTestOptional.get();
+        if (labTest == null) {
+            throw new RuntimeException("lab test not found");
+        }
+        labTest.setActive(false);
+    }
 }
