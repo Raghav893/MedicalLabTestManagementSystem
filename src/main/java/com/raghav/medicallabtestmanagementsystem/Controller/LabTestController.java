@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -28,4 +29,10 @@ public class LabTestController {
     public ResponseEntity<List<LabTest>> getAlLabTests() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/lab-tests/{id}")
+    public ResponseEntity<Optional<LabTest>> getTestById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getLabTestById(id),HttpStatus.OK);
+    }
 }
+
