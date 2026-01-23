@@ -6,10 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +19,11 @@ public class TestParameterController {
     @PostMapping("/admin/lab-tests/{labTestId}/parameters")
     public ResponseEntity<TestParameter> AddTestparameter(@RequestBody TestParameter testParameter, @PathVariable Long labTestId) {
         return new ResponseEntity<>(service.addParam(testParameter,labTestId), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/lab-tests/{labTestId}/parameters")
+    public ResponseEntity<List<TestParameter>> getParamsOfTest(@PathVariable Long labTestId) {
+        return new ResponseEntity<>(service.getTestParamByLabTestId(labTestId),HttpStatus.OK);
     }
 
 }

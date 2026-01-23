@@ -5,8 +5,12 @@ import com.raghav.medicallabtestmanagementsystem.Entity.TestParameter;
 import com.raghav.medicallabtestmanagementsystem.Repo.LabTestRepository;
 import com.raghav.medicallabtestmanagementsystem.Repo.TestParamRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +31,11 @@ public class TestParamService {
 
             return testParameterRepository.save(testParameter);
         }
+
+    public List<TestParameter> getTestParamByLabTestId(Long labTestId) {
+        Optional<LabTest> labTestOptional = labTestRepository.findById(labTestId);
+        LabTest labTest =labTestOptional.get();
+        return labTest.getParameters();
     }
+}
 
