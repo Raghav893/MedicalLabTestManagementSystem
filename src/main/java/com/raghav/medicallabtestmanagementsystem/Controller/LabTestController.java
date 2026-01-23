@@ -34,5 +34,11 @@ public class LabTestController {
     public ResponseEntity<Optional<LabTest>> getTestById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getLabTestById(id),HttpStatus.OK);
     }
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PutMapping("/admin/lab-tests/{labTestId}")
+    public ResponseEntity<?> UpdateLabTest(@PathVariable Long labTestId){
+        service.update(labTestId);
+        return ResponseEntity.ok("UPDATED");
+    }
 }
 
