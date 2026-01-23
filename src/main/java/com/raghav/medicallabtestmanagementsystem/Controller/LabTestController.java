@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
 @RequiredArgsConstructor
 public class LabTestController {
 
