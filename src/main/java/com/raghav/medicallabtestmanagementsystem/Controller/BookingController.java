@@ -24,4 +24,9 @@ public class BookingController {
         return new ResponseEntity<>(bookingService.GetAllBookings(),HttpStatus.OK);
 
     }
+
+    @GetMapping("/{bookingId}")
+    public ResponseEntity<Booking> getBookingByPatientAndPatientId(@PathVariable Long bookingId) {
+
+    }
 }

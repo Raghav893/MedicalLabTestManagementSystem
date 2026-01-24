@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,7 +38,7 @@ public class BookingService {
         }
         Booking booking = new Booking();
         booking.setPatient(patient);
-        booking.setBookingId(UUID.randomUUID());
+        booking.setBookingId(UUID.randomUUID().toString());
         booking.setBookedAt(LocalDateTime.now());
         booking.setBookingStatus(Status.BOOKED);
         return bookingRepository.save(booking);
@@ -56,5 +57,11 @@ public class BookingService {
         }
         return bookingRepository.findByPatient(patient);
     }
+    public Booking getBookingByBookingId(String bookingId) {
+        Optional<Booking> bookingOptional=bookingRepository.findByBookingId(bookingId);
+        return bookingOptional.get();
+
+    }
+
 
 }

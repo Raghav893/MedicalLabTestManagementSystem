@@ -18,7 +18,7 @@ public class Booking {
     private Long Id;
 
     @Column(nullable = false,unique = true)
-    private UUID BookingId;
+    private String bookingId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id")
