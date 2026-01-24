@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -41,6 +42,19 @@ public class BookingService {
         booking.setBookingStatus(Status.BOOKED);
         return bookingRepository.save(booking);
 
+    }
+    public List<Booking> GetAllBookings(){
+        Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Users users= userRepo.findByUsername(username);
+        if (users == null) {
+            throw new RuntimeException("User not found");
+        }
+        Patient patient = patientRepository.findByUser(users);
+        if (patient == null) {
+            throw new RuntimeException("Patient not found");
+        }
+        return bookingRepository.findByPatient(patient);
     }
 
 }
