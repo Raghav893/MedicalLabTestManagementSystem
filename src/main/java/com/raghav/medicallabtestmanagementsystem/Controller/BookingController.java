@@ -26,7 +26,7 @@ public class BookingController {
     }
 
     @GetMapping("/{bookingId}")
-    public ResponseEntity<Booking> getBookingByPatientAndPatientId(@PathVariable Long bookingId) {
-
+    public ResponseEntity<Booking> getBookingByPatientAndPatientId(@PathVariable String bookingId) {
+        return new ResponseEntity<>(bookingService.getBookingByBookingId(bookingId),HttpStatus.OK);
     }
 }
